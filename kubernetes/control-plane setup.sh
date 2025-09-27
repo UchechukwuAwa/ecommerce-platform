@@ -76,8 +76,6 @@ sudo crictl config runtime-endpoint unix:///var/run/containerd/containerd.sock
 # Step 8: Initialize control plane
 sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=172.31.89.68 --node-name master
 
-# Note: Copy the output that was generated after the init command completion to notepad, we will use that later.
-
 # Step 9: Prepare kubeconfig
 # Note: To start using your cluster, you need to run the following as a regular user:
 mkdir -p $HOME/.kube
