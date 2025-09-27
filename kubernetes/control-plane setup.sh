@@ -90,7 +90,6 @@ sha256sum --check cilium-linux-arm64.tar.gz.sha256sum
 sudo tar xzvf cilium-linux-arm64.tar.gz -C /usr/local/bin
 rm cilium-linux-arm64.tar.gz{,.sha256sum}
 cilium install
-cilium status
 
 # Wait until all Cilium pods are Running and run the below:
 kubectl -n kube-system get pods
