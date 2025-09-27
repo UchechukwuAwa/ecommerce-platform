@@ -65,3 +65,15 @@ mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
+# Install cillium
+curl -L --remote-name-all https://github.com/cilium/cilium-cli/releases/latest/download/cilium-linux-arm64.tar.gz{,.sha256sum}
+sha256sum --check cilium-linux-arm64.tar.gz.sha256sum
+sudo tar xzvf cilium-linux-arm64.tar.gz -C /usr/local/bin
+rm cilium-linux-arm64.tar.gz{,.sha256sum}
+cilium install
+
+# Wait until all Cilium pods are Running and run the below:
+kubectl -n kube-system get pods
+kubectl -n kube-system get ds cilium
+cilium status
+
