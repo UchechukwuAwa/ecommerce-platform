@@ -67,8 +67,6 @@ sudo apt-mark hold kubelet kubeadm kubectl
 kubeadm version
 kubelet --version
 kubectl version --client
-  
-# Note: The reason we are installing 1.30, so that in one of the later task, we can upgrade the cluster to a newer one later
 
 # Step 7: Configure crictl to work with containerd
 sudo crictl config runtime-endpoint unix:///var/run/containerd/containerd.sock
