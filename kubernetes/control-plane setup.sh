@@ -100,6 +100,6 @@ cilium status
 
 # Perform steps 1-7 on the worker nodes for your cluster
 # Run the command generated in step 8 from the Control plane which is similar to below
-sudo kubeadm join 172.31.71.210:6443 --token xxxxx --discovery-token-ca-cert-hash sha256:xxx
+sudo kubeadm join <private IP of control-plane>:6443 --token xxxxx --discovery-token-ca-cert-hash sha256:xxx
 # If you forgot to copy the command, you can execute below command on Control plane to generate the join command again
 kubeadm token create --print-join-command
