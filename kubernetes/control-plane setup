@@ -19,7 +19,7 @@ net.bridge.bridge-nf-call-ip6tables = 1
 net.ipv4.ip_forward                 = 1
 EOF
 
-# Apply sysctl parameters without reboot
+# Apply sysctl params without reboot
 sudo sysctl --system
 
 # Verify that the br_netfilter, overlay modules are loaded by running the following commands:
