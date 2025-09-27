@@ -83,13 +83,14 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 # Alternatively, if you are the root user, you can run:
 export KUBECONFIG=/etc/kubernetes/admin.conf
 
-# Step 10: Install calico
-kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
-curl https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/custom-resources.yaml -O
-kubectl apply -f custom-resources.yaml
-
-# Note: If you want to use cillium instead, use the below commands to install and verify installation:
-kubectl create -f https://github.com/cilium/cilium/releases/latest/download/cilium-kubeadm.yaml
+# Step 10: Install cillium
+# Note: If you want to use cillium, use the below commands to install and verify installation:
+curl -L --remote-name-all https://github.com/cilium/cilium-cli/releases/latest/download/cilium-linux-arm64.tar.gz{,.sha256sum}
+sha256sum --check cilium-linux-arm64.tar.gz.sha256sum
+sudo tar xzvf cilium-linux-arm64.tar.gz -C /usr/local/bin
+rm cilium-linux-arm64.tar.gz{,.sha256sum}
+cilium install
+cilium status
 
 # Wait until all Cilium pods are Running and run the below:
 kubectl -n kube-system get pods
